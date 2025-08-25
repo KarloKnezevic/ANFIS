@@ -25,6 +25,14 @@ This project provides a Java implementation of an ANFIS that is designed to be:
 *   **Configurable:** You can easily configure the ANFIS network by specifying the number of rules, the membership functions, the T-norm, and the learning algorithm.
 *   **Well-Documented:** The code is documented with Javadoc comments to explain the purpose of each class and method.
 
+
+## Documentation
+
+For more detailed documentation, please see the following guides:
+
+*   [Getting Started](./docs/GettingStarted.md)
+*   [Advanced Usage](./docs/AdvancedUsage.md)
+
 ## Implementation Details
 
 The core components of the implementation are:
