@@ -52,29 +52,29 @@ graph TD
     end
 
     subgraph "Layer 1: Fuzzification"
-        A1(μA1)
-        B1(μB1)
-        A2(μA2)
-        B2(μB2)
+        A1["μA1"]
+        B1["μB1"]
+        A2["μA2"]
+        B2["μB2"]
     end
 
     subgraph "Layer 2: Rule Antecedent"
-        w1(w1 = μA1 * μB1)
-        w2(w2 = μA2 * μB2)
+        w1["w1 = μA1 * μB1"]
+        w2["w2 = μA2 * μB2"]
     end
 
     subgraph "Layer 3: Normalization"
-        w1_norm(w̄1 = w1 / (w1+w2))
-        w2_norm(w̄2 = w2 / (w1+w2))
+        w1_norm["w̄1 = w1 / (w1 + w2)"]
+        w2_norm["w̄2 = w2 / (w1 + w2)"]
     end
 
     subgraph "Layer 4: Rule Consequent"
-        f1(w̄1 * f1)
-        f2(w̄2 * f2)
+        f1["w̄1 * f1"]
+        f2["w̄2 * f2"]
     end
 
     subgraph "Layer 5: Output"
-        f_out(Σ w̄i * fi)
+        f_out["Σ w̄i * fi"]
     end
 
     x --> A1
