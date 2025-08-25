@@ -4,6 +4,7 @@ This guide covers more advanced topics, such as implementing and using your own 
 
 ## Implementing a Custom Membership Function
 
+<<<<<<< HEAD
 To create your own membership function, you need to implement the `IMembershipFunction` interface. This interface is `sealed` and currently only permits `SigmoidMF`. To add a new membership function, you will need to unseal the interface or add your new class to the `permits` clause.
 
 The `IMembershipFunction` interface has the following methods:
@@ -18,6 +19,28 @@ Here's an example of a simple triangular membership function implemented as a re
 
 ```java
 public record TriangularMF(double a, double b, double c) implements IMembershipFunction {
+=======
+To create your own membership function, you need to implement the `IMembershipFunction` interface. This interface has four methods:
+
+*   `double compute(double x)`: Computes the membership value for a given input `x`.
+*   `double[] getParameters()`: Returns an array of the membership function's parameters.
+*   `void setParameters(double[] params)`: Sets the membership function's parameters.
+*   `int getNumberOfParameters()`: Returns the number of parameters.
+*   `double computeDerivative(double x, int paramIndex)`: Computes the derivative of the membership function with respect to a parameter.
+
+Here's an example of a simple triangular membership function:
+
+```java
+public class TriangularMF implements IMembershipFunction {
+
+    private double a, b, c; // Parameters for the triangular function
+
+    public TriangularMF(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+>>>>>>> master
 
     @Override
     public double compute(double x) {
@@ -30,8 +53,15 @@ public record TriangularMF(double a, double b, double c) implements IMembershipF
     }
 
     @Override
+<<<<<<< HEAD
     public IMembershipFunction withParameters(double[] params) {
         return new TriangularMF(params[0], params[1], params[2]);
+=======
+    public void setParameters(double[] params) {
+        this.a = params[0];
+        this.b = params[1];
+        this.c = params[2];
+>>>>>>> master
     }
 
     @Override

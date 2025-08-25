@@ -34,7 +34,11 @@ public class OfflineGradientDescent {
 
 		Collections.shuffle(dataset);
 
+<<<<<<< HEAD
 		dataset.stream().forEach(sample -> {
+=======
+		for (Pair sample : dataset) {
+>>>>>>> master
 			double x = sample.x();
 			double y = sample.y();
 			double expected = sample.value();
@@ -43,7 +47,11 @@ public class OfflineGradientDescent {
 			double error = expected - actual;
 
 			updateGradients(anfis, x, y, error, mfA_gradients, mfB_gradients, conclusion_gradients);
+<<<<<<< HEAD
 		});
+=======
+		}
+>>>>>>> master
 
 		return updateParameters(anfis, mfA_gradients, mfB_gradients, conclusion_gradients);
 	}
