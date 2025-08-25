@@ -4,6 +4,22 @@ This guide covers more advanced topics, such as implementing and using your own 
 
 ## Implementing a Custom Membership Function
 
+<<<<<<< HEAD
+To create your own membership function, you need to implement the `IMembershipFunction` interface. This interface is `sealed` and currently only permits `SigmoidMF`. To add a new membership function, you will need to unseal the interface or add your new class to the `permits` clause.
+
+The `IMembershipFunction` interface has the following methods:
+
+*   `double compute(double x)`: Computes the membership value for a given input `x`.
+*   `double[] getParameters()`: Returns an array of the membership function's parameters.
+*   `IMembershipFunction withParameters(double[] params)`: Creates a new membership function with updated parameters.
+*   `int getNumberOfParameters()`: Returns the number of parameters.
+*   `double computeDerivative(double x, int paramIndex)`: Computes the derivative of the membership function with respect to a parameter.
+
+Here's an example of a simple triangular membership function implemented as a record:
+
+```java
+public record TriangularMF(double a, double b, double c) implements IMembershipFunction {
+=======
 To create your own membership function, you need to implement the `IMembershipFunction` interface. This interface has four methods:
 
 *   `double compute(double x)`: Computes the membership value for a given input `x`.
@@ -24,6 +40,7 @@ public class TriangularMF implements IMembershipFunction {
         this.b = b;
         this.c = c;
     }
+>>>>>>> master
 
     @Override
     public double compute(double x) {
@@ -36,10 +53,15 @@ public class TriangularMF implements IMembershipFunction {
     }
 
     @Override
+<<<<<<< HEAD
+    public IMembershipFunction withParameters(double[] params) {
+        return new TriangularMF(params[0], params[1], params[2]);
+=======
     public void setParameters(double[] params) {
         this.a = params[0];
         this.b = params[1];
         this.c = params[2];
+>>>>>>> master
     }
 
     @Override

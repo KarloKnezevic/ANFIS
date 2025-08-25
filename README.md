@@ -16,14 +16,97 @@ An ANFIS network typically has five layers:
 4.  **Defuzzification Layer:** This layer calculates the output of each rule based on the conclusion part of the rule (which is a linear function of the inputs in a Takagi-Sugeno system) and the normalized firing strength.
 5.  **Output Layer:** This layer sums the outputs of all rules to produce the final output of the ANFIS network.
 
+## Architecture
+
+### Project Structure
+
+```mermaid
+graph TD
+    A[ANFIS Library] --> B(main)
+    A --> C(membershipFunction)
+    A --> D(network)
+    A --> E(rule)
+    A --> F(tNorm)
+    A --> G(util)
+
+    B --> C
+    B --> D
+    B --> F
+    B --> G
+
+    D --> C
+    D --> E
+    D --> F
+
+    E --> C
+    E --> F
+```
+
+### ANFIS Network Architecture
+
+```mermaid
+graph TD
+    subgraph "Input Layer"
+        x((x))
+        y((y))
+    end
+
+    subgraph "Layer 1: Fuzzification"
+        A1["μA1"]
+        B1["μB1"]
+        A2["μA2"]
+        B2["μB2"]
+    end
+
+    subgraph "Layer 2: Rule Antecedent"
+        w1["w1 = μA1 * μB1"]
+        w2["w2 = μA2 * μB2"]
+    end
+
+    subgraph "Layer 3: Normalization"
+        w1_norm["w̄1 = w1 / (w1 + w2)"]
+        w2_norm["w̄2 = w2 / (w1 + w2)"]
+    end
+
+    subgraph "Layer 4: Rule Consequent"
+        f1["w̄1 * f1"]
+        f2["w̄2 * f2"]
+    end
+
+    subgraph "Layer 5: Output"
+        f_out["Σ w̄i * fi"]
+    end
+
+    x --> A1
+    x --> A2
+    y --> B1
+    y --> B2
+
+    A1 --> w1
+    B1 --> w1
+    A2 --> w2
+    B2 --> w2
+
+    w1 --> w1_norm
+    w2 --> w1_norm
+    w1 --> w2_norm
+    w2 --> w2_norm
+
+    w1_norm --> f1
+    w2_norm --> f2
+
+    f1 --> f_out
+    f2 --> f_out
+```
+
 ## Project Overview
 
 This project provides a Java implementation of an ANFIS that is designed to be:
 
-*   **Generic:** The implementation is not tied to any specific membership function or T-norm. You can easily plug in your own implementations by implementing the `IMembershipFunction` and `ITNorm` interfaces.
-*   **Robust:** The code is well-structured and follows object-oriented principles, making it easier to understand, maintain, and extend.
-*   **Configurable:** You can easily configure the ANFIS network by specifying the number of rules, the membership functions, the T-norm, and the learning algorithm.
-*   **Well-Documented:** The code is documented with Javadoc comments to explain the purpose of each class and method.
+*   **Modern Java:** The project is built with Java 21 and leverages modern features like records, sealed classes, streams, and immutability to create a more robust and maintainable codebase.
+*   **Generic and Extensible:** The implementation is not tied to any specific membership function or T-norm. You can easily plug in your own implementations by implementing the `IMembershipFunction` and `ITNorm` interfaces.
+*   **Configurable:** The ANFIS network's parameters (number of rules, learning rate, etc.) can be easily configured through a `config.properties` file.
+*   **Well-Documented:** The code is documented with Javadoc comments, and this README provides a comprehensive overview of the project.
 
 ## Documentation
 
@@ -36,13 +119,11 @@ For more detailed documentation, please see the following guides:
 
 The core components of the implementation are:
 
-*   **`IMembershipFunction` interface:** Defines the contract for membership functions. It has a `compute(x)` method to calculate the membership value and a `computeDerivative(x, paramIndex)` method to calculate the derivative with respect to a parameter, which is needed for the learning algorithm.
-*   **`SigmoidMF` class:** An implementation of the `IMembershipFunction` interface that represents a sigmoid membership function.
-*   **`ITNorm` interface:** Defines the contract for T-norms. It has a `computeNorm(a, b)` method to calculate the T-norm and a `computeDerivative(a, b, varIndex)` method to calculate the derivative.
-*   **`HamacherProduct` class:** An implementation of the `ITNorm` interface that represents the Hamacher product T-norm.
-*   **`ANFIS` class:** The main class that represents the ANFIS network. It is configured with membership functions and a T-norm.
-*   **`Rule` and `Conclusion` classes:** Represent the fuzzy rules in the ANFIS network.
-*   **`OfflineGradientDescent` and `OnlineGradientDescent` classes:** Two implementations of the gradient descent learning algorithm. The offline version updates the parameters after each epoch, while the online version updates them after each sample.
+*   **`IMembershipFunction` and `ITNorm`:** These are `sealed` interfaces that define the contracts for membership functions and T-norms, respectively. This allows for a controlled and extensible design.
+*   **Immutable Records:** The core components of the network, including `ANFIS`, `Rule`, `Conclusion`, `Pair`, and `SigmoidMF`, are implemented as immutable `records`. This makes the code more robust and easier to reason about.
+*   **Functional Learning Algorithms:** The `OfflineGradientDescent` and `OnlineGradientDescent` classes are designed to work with the immutable `ANFIS` record. They take an `ANFIS` instance and a dataset, and return a new `ANFIS` instance with the updated parameters.
+*   **Configuration:** The `Main` class loads the network configuration from a `config.properties` file, making it easy to experiment with different parameters.
+*   **CLI Monitoring:** The `Main` class provides a simple CLI that shows the learning progress in real-time.
 
 ## How to Run
 
