@@ -1,0 +1,16 @@
+/app/src/main/java/hr/fer/zemris/nenr/lab2/dataset/Dataset.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/function/F1.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/function/IFunction.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/main/Main.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/membershipFunction/IMembershipFunction.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/membershipFunction/MembershipFunctionFactory.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/membershipFunction/SigmoidMF.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/network/ANFIS.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/network/OfflineGradientDescent.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/network/OnlineGradientDescent.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/rule/Conclusion.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/rule/Rule.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/tNorm/HamacherProduct.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/tNorm/ITNorm.java
+/app/src/main/java/hr/fer/zemris/nenr/lab2/util/Pair.java
+/app/src/main/java/module-info.java
