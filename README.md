@@ -46,24 +46,38 @@ The core components of the implementation are:
 
 ## How to Run
 
-The project includes a `Main` class with an example of how to use the ANFIS implementation. To run the example, you first need to compile the code and then run the `Main` class.
+This project is built with Maven. You can compile, test, and run the application using Maven commands.
 
 ### Compile the code
 
-You can compile the code using the following command from the root of the project:
+To compile the code, run the following command from the root of the project:
 
 ```bash
-javac -d bin $(find src -name "*.java")
+mvn compile
 ```
-
-This will compile all the Java files and put the compiled classes into the `bin` directory.
 
 ### Run the example
 
-You can run the example using the following command:
+To run the example `Main` class, you can use the `exec-maven-plugin`:
 
 ```bash
-java -cp bin hr.fer.zemris.nenr.lab2.main.Main
+mvn exec:java -Dexec.mainClass="hr.fer.zemris.nenr.lab2.main.Main"
 ```
 
-This will run the `main` method in the `Main` class, which will create an ANFIS network, train it on a sample dataset, and then test its performance.
+### Build the executable JAR
+
+To build an executable JAR file, run the following command:
+
+```bash
+mvn package
+```
+
+This will create a file named `anfis-1.0.0.jar` in the `target` directory.
+
+### Run from the JAR
+
+You can run the application from the JAR file using the following command:
+
+```bash
+java -jar target/anfis-1.0.0.jar
+```
