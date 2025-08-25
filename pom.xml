@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>hr.fer.zemris.nenr.lab2</groupId>
+    <artifactId>anfis</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>ANFIS</name>
+    <description>A generic Adaptive Neuro-Fuzzy Inference System (ANFIS) in Java.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+    </build>
+</project>
