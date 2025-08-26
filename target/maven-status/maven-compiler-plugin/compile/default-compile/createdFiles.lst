@@ -7,10 +7,10 @@ hr/fer/zemris/nenr/lab2/network/OnlineGradientDescent.class
 module-info.class
 hr/fer/zemris/nenr/lab2/main/Main.class
 hr/fer/zemris/nenr/lab2/membershipFunction/IMembershipFunction.class
-hr/fer/zemris/nenr/lab2/util/Pair.class
 hr/fer/zemris/nenr/lab2/tNorm/HamacherProduct.class
+hr/fer/zemris/nenr/lab2/util/Pair.class
 hr/fer/zemris/nenr/lab2/tNorm/ITNorm.class
 hr/fer/zemris/nenr/lab2/rule/Rule.class
-hr/fer/zemris/nenr/lab2/rule/Conclusion.class
 hr/fer/zemris/nenr/lab2/function/IFunction.class
+hr/fer/zemris/nenr/lab2/rule/Conclusion.class
 hr/fer/zemris/nenr/lab2/network/OfflineGradientDescent.class
