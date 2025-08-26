@@ -2,6 +2,9 @@
 
 This project provides a generic and extensible Java implementation of an Adaptive Neuro-Fuzzy Inference System (ANFIS). The implementation is designed to be easily configurable with different membership functions and T-norms, making it a flexible tool for building and training ANFIS models.
 
+![Build](https://github.com/KarloKnezevic/ANFIS/actions/workflows/build.yml/badge.svg)
+
+
 ## What is ANFIS?
 
 An Adaptive Neuro-Fuzzy Inference System (ANFIS) is a type of artificial neural network that is based on a Takagi-Sugeno fuzzy inference system. It integrates both neural networks and fuzzy logic principles, which allows it to capture the benefits of both in a single framework.
