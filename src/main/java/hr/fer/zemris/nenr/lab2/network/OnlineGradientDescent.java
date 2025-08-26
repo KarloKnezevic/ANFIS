@@ -24,17 +24,9 @@ public class OnlineGradientDescent {
 	public ANFIS learn(ANFIS anfis, List<Pair> dataset) {
 		Collections.shuffle(dataset);
 
-<<<<<<< HEAD
 		return dataset.stream()
 				.reduce(anfis, (currentAnfis, sample) -> updateParameters(currentAnfis, sample.x(), sample.y(), sample.value()),
 						(anfis1, anfis2) -> anfis2);
-=======
-		ANFIS currentAnfis = anfis;
-		for (Pair sample : dataset) {
-			currentAnfis = updateParameters(currentAnfis, sample.x(), sample.y(), sample.value());
-		}
-		return currentAnfis;
->>>>>>> master
 	}
 
 	private ANFIS updateParameters(ANFIS anfis, double x, double y, double expected) {
