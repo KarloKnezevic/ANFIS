@@ -2,7 +2,7 @@ package com.fuzzy.system.membership;
 
 public final class GaussianMembershipFunction implements MembershipFunction {
 
-    private final double mean, sigma;
+    private double mean, sigma;
 
     public GaussianMembershipFunction(double mean, double sigma) {
         this.mean = mean;
@@ -17,5 +17,19 @@ public final class GaussianMembershipFunction implements MembershipFunction {
     @Override
     public double getCenter() {
         return mean;
+    }
+
+    @Override
+    public double[] getParameters() {
+        return new double[]{mean, sigma};
+    }
+
+    @Override
+    public void setParameters(double[] params) {
+        if (params.length != 2) {
+            throw new IllegalArgumentException("GaussianMembershipFunction requires 2 parameters.");
+        }
+        this.mean = params[0];
+        this.sigma = params[1];
     }
 }

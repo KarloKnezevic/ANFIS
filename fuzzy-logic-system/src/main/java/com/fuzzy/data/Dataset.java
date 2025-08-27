@@ -18,6 +18,10 @@ public class Dataset {
         this.dataPoints = List.copyOf(dataPoints);
     }
 
+    public static Dataset fromDataPoints(List<DataPoint> dataPoints) {
+        return new Dataset(dataPoints);
+    }
+
     public static Dataset fromResource(String resourceName) {
         List<DataPoint> points = new ArrayList<>();
         InputStream is = Dataset.class.getClassLoader().getResourceAsStream(resourceName);

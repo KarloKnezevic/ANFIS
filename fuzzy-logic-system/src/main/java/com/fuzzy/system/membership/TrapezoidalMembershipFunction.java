@@ -2,7 +2,7 @@ package com.fuzzy.system.membership;
 
 public final class TrapezoidalMembershipFunction implements MembershipFunction {
 
-    private final double a, b, c, d;
+    private double a, b, c, d;
 
     public TrapezoidalMembershipFunction(double a, double b, double c, double d) {
         this.a = a;
@@ -27,5 +27,21 @@ public final class TrapezoidalMembershipFunction implements MembershipFunction {
     @Override
     public double getCenter() {
         return (b + c) / 2.0;
+    }
+
+    @Override
+    public double[] getParameters() {
+        return new double[]{a, b, c, d};
+    }
+
+    @Override
+    public void setParameters(double[] params) {
+        if (params.length != 4) {
+            throw new IllegalArgumentException("TrapezoidalMembershipFunction requires 4 parameters.");
+        }
+        this.a = params[0];
+        this.b = params[1];
+        this.c = params[2];
+        this.d = params[3];
     }
 }

@@ -2,7 +2,7 @@ package com.fuzzy.system.membership;
 
 public final class TriangularMembershipFunction implements MembershipFunction {
 
-    private final double a, b, c;
+    private double a, b, c;
 
     public TriangularMembershipFunction(double a, double b, double c) {
         this.a = a;
@@ -26,5 +26,20 @@ public final class TriangularMembershipFunction implements MembershipFunction {
     @Override
     public double getCenter() {
         return b;
+    }
+
+    @Override
+    public double[] getParameters() {
+        return new double[]{a, b, c};
+    }
+
+    @Override
+    public void setParameters(double[] params) {
+        if (params.length != 3) {
+            throw new IllegalArgumentException("TriangularMembershipFunction requires 3 parameters.");
+        }
+        this.a = params[0];
+        this.b = params[1];
+        this.c = params[2];
     }
 }

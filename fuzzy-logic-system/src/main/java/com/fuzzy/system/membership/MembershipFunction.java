@@ -22,4 +22,18 @@ public sealed interface MembershipFunction permits TriangularMembershipFunction,
      * @return the center of the membership function
      */
     double getCenter();
+
+    /**
+     * Gets the parameters of the membership function.
+     *
+     * @return an array of parameters
+     */
+    double[] getParameters();
+
+    /**
+     * Sets the parameters of the membership function.
+     *
+     * @param params an array of parameters
+     */
+    void setParameters(double[] params);
 }
